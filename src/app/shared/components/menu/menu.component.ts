@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit{
       },
       {label: 'Pipes personalizados', icon:'pi pi-fw pi-cog',
         items: [
-          {label: 'Otro elemento', icon:'pi pi-fw pi-cog'}
+          {label: 'Otro elemento', icon:'pi pi-fw pi-cog', routerLink:'custom'}
         ]
       }
     ]

@@ -14,17 +14,36 @@
   </div>
 
   <div class="p-toolbar-group-end">
-      <p-button label="Por nombre" icon="pi pi-sort" class="mr-2" styleClass="p-button-success"></p-button>
-      <p-button label="Por Volar" icon="pi pi-sort" class="mr-2" styleClass="p-button-danger"></p-button>
-      <p-button label="Por Color" icon="pi pi-sort" styleClass="p-button-warning"></p-button>
+      <p-button
+        (onClick)="changeOrder('name')"
+        label="Por nombre"
+        icon="pi pi-sort"
+        class="mr-2"
+        styleClass="p-button-success"
+        >
+      </p-button>
+      <p-button
+        (onClick)="changeOrder('canFly')"
+        label="Por Volar"
+        icon="pi pi-sort"
+        class="mr-2"
+        styleClass="p-button-danger"
+        >
+      </p-button>
+      <p-button
+        (onClick)="changeOrder('color')"
+        label="Por Color"
+        icon="pi pi-sort"
+        styleClass="p-button-warning"
+        >
+      </p-button>
   </div>
 </p-toolbar>
 
 <div class="grid">
   <div class="col mt-2">
-
     <p-panel header="Héroes">
-      <p-table [value]="hero" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="hero | sortBy:orderBy" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>Name</th>
@@ -35,7 +54,7 @@
         <ng-template pTemplate="body" let-hero>
             <tr>
                 <td>{{ hero.name }}</td>
-                <td>{{ hero.canFly }}</td>
+                <td>{{ hero.canFly | canFlyCase }}</td>
                 <td>{{ hero.color }}</td>
             </tr>
         </ng-template>
